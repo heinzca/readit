@@ -4,7 +4,7 @@ class VotesController < ApplicationController
     @story.votes.create
     respond_to do |format|
       format.html { redirect_to @story, notice: 'Vote was successfully created.' }
-      # format.js {} # When this is not commented, vote isn't working...
+      format.js {}
     end
   end
 end
