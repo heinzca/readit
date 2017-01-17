@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         redirect_to stories_path
       end
     else
-      render action: new
+      render action: 'new'
     end
   end
 
