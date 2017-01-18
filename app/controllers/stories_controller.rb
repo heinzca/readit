@@ -1,9 +1,13 @@
 class StoriesController < ApplicationController
   before_action :ensure_login, only: [ :new, :create ]
+
   def index
-    # @current_time=Time.now
-    # @story=Story.find_by(name: 'Sitepoint Forums')
-    @story=Story.order('RANDOM()').first
+    @stories=fetch_stories('votes_count>=5')
+  end
+
+  def bin
+    @stories=fetch_stories('votes_count<5')
+    render action: 'index'
   end
 
   def new
@@ -28,4 +32,8 @@ class StoriesController < ApplicationController
     params.require(:story).permit(:name, :link)
   end
 
+  protected
+  def fetch_stories(conditions)
+    @stories = Story.where(conditions).order("created_at DESC")
+  end
 end
