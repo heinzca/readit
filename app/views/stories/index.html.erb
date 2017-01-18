@@ -1,4 +1,4 @@
 <h2>
-<%= "Showing #{ pluralize(@stories.size, 'story') }" %>
+<%= story_list_heading %>
 </h2>
 <%= render partial: 'story', collection: @stories %>

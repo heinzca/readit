@@ -2,11 +2,13 @@ class StoriesController < ApplicationController
   before_action :ensure_login, only: [ :new, :create ]
 
   def index
-    @stories=fetch_stories('votes_count>=5')
+    # @stories=fetch_stories('votes_count>=5')
+    @stories = Story.popular
   end
 
   def bin
-    @stories=fetch_stories('votes_count<5')
+    # @stories=fetch_stories('votes_count<5')
+    @stories = Story.upcoming
     render action: 'index'
   end
 
@@ -33,7 +35,7 @@ class StoriesController < ApplicationController
   end
 
   protected
-  def fetch_stories(conditions)
-    @stories = Story.where(conditions).order("created_at DESC")
-  end
+  # def fetch_stories(conditions)
+  #   @stories = Story.where(conditions).order("created_at DESC")
+  # end
 end
