@@ -7,7 +7,7 @@ class Story < ApplicationRecord
     end
   end
 
-  scope :upcoming, -> { where("votes_count < 5").order("id DESC")}
+  scope :upcoming, -> { where("votes_count < 5").order("votes_count DESC")}
   scope :popular, -> { where("votes_count >= 5").order("id DESC")}
 
   def to_param
