@@ -1,8 +1,8 @@
 <h2>
-  <span id="vote_score">
-    Score: <%= @story.votes.size %>
-  </span>
-  <%= @story.name %>
+<span id="vote_score">
+  Score: <%= @story.votes.size %>
+</span>
+<%= @story.name %>
 </h2>
 
 <ul id="vote_history">
@@ -19,7 +19,7 @@
 
 <p class="submitted_by">
   Submitted by:
-  <span><%= @story.user.name %></span>
+  <span><%= link_to @story.user.name, @story.user %></span>
 </p>
 
 <p>
